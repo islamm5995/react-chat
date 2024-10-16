@@ -1,109 +1,255 @@
 /* src/App.css */
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f7f9;
-  }
-  
-  .App {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  h1 {
-    color: #333;
-  }
-  
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, rgba(0, 204, 255, 0.8), rgba(255, 0, 128, 0.8)),
+              url('https://source.unsplash.com/random/1920x1080') no-repeat center center fixed;
+  background-size: cover;
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.App {
+  text-align: center;
+  padding: 20px;
+  color: white;
+}
+
+h1 {
+  font-size: 2.5em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.chat-container {
+  max-width: 600px;
+  margin: 20px auto;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  padding: 30px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(10px);
+}
+
+.messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding-right: 10px; /* Отступ справа для прокрутки */
+}
+
+.messages li {
+  padding: 10px;
+  border-radius: 10px;
+  margin: 5px 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  transition: background-color 0.3s;
+  animation: fadeInScale 0.5s ease; /* Применяем анимацию */
+}
+
+.messages li:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.message-form {
+  display: flex;
+  animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.message-form input {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  margin-right: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.message-form button {
+  padding: 12px 20px;
+  border: none;
+  background-color: #ff4081;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.message-form button:hover {
+  background-color: #f50057;
+}
+
+.username-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.username-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.username-container input {
+  padding: 10px;
+  width: 250px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.username-container button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #6200ea;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.username-container button:hover {
+  background-color: #3700b3;
+}
+
+h2 {
+  font-size: 2em;
+  color: #ffffff;
+  text-shadow: 
+      0 0 10px rgba(255, 165, 0, 1),
+      0 0 20px rgba(255, 165, 0, 1),
+      0 0 30px rgba(255, 165, 0, 1);
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
   .chat-container {
-    max-width: 600px;
-    margin: 20px auto;
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    height: 500px;
-    display: flex;
-    flex-direction: column;
+      padding: 20px;
+      height: auto; /* Позволяет высоте адаптироваться */
   }
-  
-  .messages {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    flex: 1;
-    overflow-y: auto;
-    margin-bottom: 20px;
+
+  h1 {
+      font-size: 2em;
   }
-  
-  .messages li {
-    padding: 10px;
-    border-bottom: 1px solid #eee;
-    text-align: left;
+
+  h2 {
+      font-size: 1.5em;
   }
-  
-  .message-form {
-    display: flex;
-  }
-  
+
   .message-form input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    font-size: 16px;
+      font-size: 14px; /* Уменьшаем размер шрифта на мобильных */
   }
-  
+
   .message-form button {
-    padding: 10px 20px;
-    margin-left: 10px;
-    border: none;
-    background-color: #28a745;
-    color: white;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 16px;
+      font-size: 14px; /* Уменьшаем размер шрифта на мобильных */
   }
-  
-  .message-form button:hover {
-    background-color: #218838;
-  }
-  
-  .username-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
-  
-  .username-container form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
+
   .username-container input {
-    padding: 10px;
-    width: 200px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    font-size: 16px;
+      width: 80%; /* Делаем ширину ввода более адаптивной */
   }
-  
-  .username-container button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 16px;
+}
+
+@media (max-width: 480px) {
+  .username-container {
+      padding: 10px;
   }
-  
-  .username-container button:hover {
-    background-color: #0069d9;
+
+  .username-container input {
+      width: 90%; /* Увеличиваем ширину для мобильных устройств */
   }
-  
+
+  .message-form {
+      flex-direction: column; /* Вертикальная компоновка для мобильных */
+  }
+
+  .message-form input {
+      margin-right: 0; /* Убираем правый отступ */
+      margin-bottom: 10px; /* Добавляем нижний отступ */
+      width: 100%; /* Полная ширина на мобильных */
+  }
+}
+
+/* ... остальные стили ... */
+
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.messages li {
+  padding: 10px;
+  border-radius: 10px;
+  margin: 5px 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  transition: background-color 0.3s, transform 0.2s;
+  animation: fadeIn 0.5s ease; /* Применяем анимацию */
+}
+
+.messages li:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: scale(1.02); /* Увеличение при наведении */
+}
+
+/* Анимация для формы сообщений */
+.message-form {
+  display: flex;
+  animation: slideIn 0.5s ease-in-out; /* Эффект появления формы */
+}
+
+@keyframes slideIn {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+/* Анимация для кнопок */
+.message-form button, .username-container button {
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.message-form button:hover, .username-container button:hover {
+  transform: scale(1.05); /* Увеличение кнопок при наведении */
+}
+
+.loading-message {
+  padding: 10px;
+  color: white;
+  text-align: center;
+  font-style: italic;
+  animation: fadeIn 1s ease-in; /* Анимация для загрузки */
+}

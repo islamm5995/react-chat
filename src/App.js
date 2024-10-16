@@ -18,6 +18,7 @@ function App() {
   if (!username) {
     return (
       <div className="username-container">
+        <h2>Привет добро пожаловать в мой чат</h2>
         <h2>Введите ваше имя</h2>
         <form onSubmit={handleSetUsername}>
           <input type="text" name="username" placeholder="Имя пользователя" required />
@@ -29,7 +30,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Чат-приложение на React и Firebase</h1>
+      <h1>Чат Ислама</h1>
       <div className="chat-container">
         <MessageList />
         <MessageForm currentUser={username} />
@@ -39,4 +40,3 @@ function App() {
 }
 
 export default App;
-// islam
